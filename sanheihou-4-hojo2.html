@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三平方の定理｜江原予備校 GAMBA</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<style>:root{--ink:#26323f;--sub:#5b6b7a;--line:#d9e1e8;--bg:#f4f7fa;--card:#fff;--main:#1f6fb2;--main-d:#14507f;--ct:#ffe0b3;--ct-s:#d9822b;--ok:#1f9d55;--ng:#d64545}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic","BIZ UDGothic","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;line-height:1.85;font-size:17px}
+header.hero{background:linear-gradient(135deg,#1f6fb2,#2e8fd1);color:#fff;padding:30px 20px 26px;text-align:center}
+header.hero small{display:block;opacity:.85;letter-spacing:.12em}
+header.hero h1{margin:6px 0 4px;font-size:28px;line-height:1.4}
+header.hero p{margin:0;opacity:.95}
+nav.units{background:#fff;border-bottom:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;justify-content:center}
+nav.units a{text-decoration:none;color:var(--main-d);background:#eaf3fb;padding:4px 11px;border-radius:999px;font-size:13.5px;white-space:nowrap}
+nav.units a.now{background:var(--main);color:#fff}
+main{max-width:860px;margin:0 auto;padding:14px 14px 80px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 24px;margin:18px 0;box-shadow:0 2px 8px rgba(40,70,100,.06)}
+h2{margin:0 0 8px;font-size:22px;color:var(--main-d);border-left:7px solid var(--main);padding-left:12px;line-height:1.5}
+h3{margin:6px 0;font-size:18px}
+.lead{color:var(--sub);margin:4px 0 12px}
+.point{background:#fff8e6;border:2px solid #f0c15a;border-radius:10px;padding:10px 16px;margin:12px 0}
+.point b.t{display:inline-block;background:#f0a81a;color:#fff;border-radius:6px;padding:0 10px;margin-right:8px;font-size:15px}
+.point .big{text-align:center;font-size:24px;font-weight:700;margin:4px 0}
+.ex{border:1px solid #cfe0ef;border-radius:12px;padding:14px 16px 16px;margin:16px 0;background:#fcfeff}
+.ex .exh{display:inline-block;background:var(--main);color:#fff;border-radius:6px;padding:0 12px;font-weight:700;margin-bottom:6px}
+.exq{font-weight:700;margin:2px 0 8px}
+.fig{background:#fbfdff;border:1px solid var(--line);border-radius:12px;padding:6px;text-align:center}
+.fig>svg{width:100%;max-width:520px;height:auto;display:inline-block}
+.steptext{min-height:78px;margin:10px 2px 4px}
+.formula{background:#f1f7fd;border:1px solid #cfe2f4;border-radius:10px;padding:8px 16px;min-height:54px;font-size:20px;line-height:2}
+.formula .ln{display:block}
+.formula .hi{background:#fff3b0;border-radius:4px;padding:0 4px}
+.ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+button{font-family:inherit;font-size:16px;border:none;border-radius:9px;padding:8px 16px;cursor:pointer;background:var(--main);color:#fff}
+button:hover{background:var(--main-d)}
+button:disabled{background:#b8c4cf;cursor:default}
+button.ghost{background:#eaf1f7;color:var(--main-d)}button.ghost:hover{background:#d8e6f2}
+.dots{margin-left:auto;color:var(--sub);font-size:14px}
+svg text{font-family:inherit}
+svg .lab{font-weight:700;fill:var(--lf,#26323f);text-anchor:middle;dominant-baseline:middle}
+svg .lab.s{font-size:15px}svg .lab.m{font-size:18px}svg .lab.b{font-size:22px}
+svg .tri{fill:var(--ct);stroke:var(--ct-s);stroke-width:2;stroke-linejoin:round}
+svg .plain{fill:#eaf4fd;stroke:#2f7fc0;stroke-width:2.2;stroke-linejoin:round}
+svg .cut{fill:#fde0e0;stroke:#d64545;stroke-width:1.8;stroke-dasharray:5 4}
+svg .green{fill:#c7eccf;stroke:#3f9a55;stroke-width:2}
+svg .blue{fill:#bcdcf7;stroke:#2f7fc0;stroke-width:2}
+svg .hl{fill:#ffe9a8;stroke:#d9822b;stroke-width:2.4;stroke-linejoin:round}
+svg .ln{stroke:#26323f;stroke-width:2.2;fill:none}
+svg .ln.aux{stroke:#d63a3a;stroke-width:2.6;stroke-dasharray:7 4}
+svg .ln.dash{stroke-dasharray:5 4;stroke-width:1.6;stroke-opacity:.65}
+svg .ln.hl{stroke:#e8892b;stroke-width:4}
+svg .ln.thin{stroke-width:1;stroke:#aab8c5}
+svg .ln.ax{stroke-width:1.6;stroke:#26323f}
+svg .ra{fill:none;stroke:#26323f;stroke-width:1.6}
+svg .dot{fill:#26323f}
+.rad{white-space:nowrap}.rad .rr{border-top:1.5px solid currentColor;padding:0 1px;margin-left:1px}
+.fr{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 2px}
+.fr>span{display:block;padding:0 3px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.pr{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;background:#fdfefe}
+.pr .qt{font-weight:700;margin-bottom:6px}
+.pr .opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:8px}
+.pr .opts button{background:#fff;color:var(--ink);border:2px solid #c7d6e4;text-align:center;font-size:18px;padding:8px 10px}
+.pr .opts button:hover{background:#f0f7fd}
+.pr .opts button.right{background:#e3f6e9;border-color:var(--ok)}
+.pr .opts button.wrong{background:#fde7e7;border-color:var(--ng)}
+.pr .fb{min-height:24px;margin-top:8px;font-size:16px}
+.pr .fb.ok{color:#177a43}.pr .fb.ng{color:var(--ng)}
+.pr .sol{display:none;background:#f1f7fd;border:1px solid #cfe2f4;border-radius:10px;padding:8px 14px;margin-top:8px;font-size:17px}
+.pr .sol.on{display:block}
+.pr .sol .ln{display:block}
+.pr .hintbtn{background:#fff3d6;color:#8a5a00;font-size:14px;padding:4px 12px;margin-top:6px}
+.modal{position:fixed;inset:0;background:rgba(20,30,40,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal.on{display:flex}
+.modal .box{background:#fff;border-radius:14px;padding:20px 24px;max-width:480px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.modal .box h4{margin:0 0 6px;color:#8a5a00}
+#prog{font-weight:700;color:var(--main-d)}
+#clear{display:none;text-align:center;font-size:21px;color:#14683a;font-weight:700;padding:14px;background:#e8f8ee;border-radius:12px;margin-top:10px}
+canvas#petals{position:fixed;inset:0;pointer-events:none;z-index:60}
+i.v{font-style:italic;font-family:"Times New Roman","BIZ UDPMincho",serif;font-size:1.08em}
+table.rt{border-collapse:collapse;margin:8px auto}table.rt td,table.rt th{border:1px solid #9fb3c4;padding:4px 14px;text-align:center}
+footer{text-align:center;color:var(--sub);font-size:13px;padding:20px}
+svg .semi{fill:rgba(255,150,40,.42);stroke:#d9822b;stroke-width:2.2;stroke-linejoin:round}
+
+.flab{display:flex;align-items:center;justify-content:center;height:44px;font-weight:700;white-space:nowrap}
+.katex{font-size:1.08em}
+.flab .katex{font-size:1em}
+.flab .katex svg{width:revert;max-width:none;height:revert;display:block}
+
+/* 図版の共通調整：白背景・文字の縁取り・補助線の区別・スマホ対応 */
+.fig{background:#fff;border:1px solid #d5e4ef;border-radius:13px;padding:12px 8px;margin:14px auto;box-sizing:border-box;overflow:visible}
+.fig svg{display:block;margin:auto;overflow:visible;max-width:100%;height:auto;filter:none}
+.fig svg .lab{paint-order:stroke fill;stroke:#fff;stroke-width:4px;stroke-linejoin:round;font-family:"BIZ UDPGothic","BIZ UDゴシック",system-ui,sans-serif;letter-spacing:.01em}
+.fig svg .lab.s{font-size:16px}.fig svg .lab.m{font-size:19px}
+.fig svg .ln,.fig svg .ra{stroke-linecap:round;stroke-linejoin:round}
+.fig svg .ln.aux{stroke:#d64c36;stroke-dasharray:7 5;stroke-width:2.9}
+.fig svg .ln.dash{stroke:#66788c;stroke-dasharray:5 5;stroke-opacity:.8}
+.fig svg .hl{fill:#ffe0a0;fill-opacity:.38;stroke:#df8020;stroke-width:2.4}
+.fig svg .semi{fill:#f6c26e;fill-opacity:.24;stroke:#d97b27;stroke-width:2.2}
+.fig svg .ln.thin{stroke:#d9e4ed;stroke-width:.9;stroke-opacity:.9}
+.fig svg .ln.ax{stroke:#37566b;stroke-width:1.7}
+@media(max-width:520px){.fig{padding:10px 4px}.fig svg .lab.m{font-size:18px}}
+.pn{display:flex;justify-content:space-between;gap:10px;max-width:860px;margin:10px auto 0;padding:0 14px}
+.pn a{flex:1;text-align:center;text-decoration:none;background:#1f6fb2;color:#fff;border-radius:10px;padding:12px 8px;font-weight:700}
+.pn a.prev{background:#fff;color:#1f6fb2;border:2px solid #1f6fb2}
+.pn span{flex:1}
+</style></head><body>
+<script>/* ===== 江原予備校 GAMBA 三平方の定理 共通部品 ===== */
+const $ = id => document.getElementById(id);
+const UNITS = [
+  ['sanheihou.html','① なぜ成り立つか'],
+  ['sanheihou-2-keisan.html','② 計算'],
+  ['sanheihou-3-hojo1.html','③ 補助線①'],
+  ['sanheihou-4-hojo2.html','④ 補助線②（円）'],
+  ['sanheihou-5-zahyo.html','⑤ 座標'],
+  ['sanheihou-6-kukan.html','⑥ 空間図形'],
+  ['sanheihou-7-hi.html','⑦ 特別な三角形'],
+  ['sanheihou-8-taiseki.html','⑧ 体積・方程式'],
+  ['sanheihou-9-matome.html','⑨ まとめ演習']
+];
+/* 数式の簡易表記 → HTML */
+function _bal(s,i){let d=0;for(let j=i;j<s.length;j++){if(s[j]==='{')d++;else if(s[j]==='}'){d--;if(d===0)return j;}}return s.length-1;}
+function _tex(s){
+  let o='';
+  for(let i=0;i<s.length;){
+    if(s.startsWith('√{',i)){const j=_bal(s,i+1);o+='\\sqrt{'+_tex(s.slice(i+2,j))+'}';i=j+1;}
+    else if(s[i]==='√'&&/\d/.test(s[i+1]||'')){let k=i+1,d='';while(/\d/.test(s[k]||'')){d+=s[k];k++;}o+='\\sqrt{'+d+'}';i=k;}
+    else if(s.startsWith('F{',i)){const j=_bal(s,i+1);const in_=s.slice(i+2,j);let dp=0,cut=-1;for(let k=0;k<in_.length;k++){if(in_[k]==='{')dp++;else if(in_[k]==='}')dp--;else if(in_[k]==='|'&&dp===0){cut=k;break;}}
+      o+='\\dfrac{'+_tex(in_.slice(0,cut))+'}{'+_tex(in_.slice(cut+1))+'}';i=j+1;}
+    else if(s[i]==='^'&&/\d/.test(s[i+1]||'')){o+='^{'+s[i+1]+'}';i+=2;}
+    else if(s[i]==='×'){o+='\\times ';i++;}
+    else if(s[i]==='−'){o+='-';i++;}
+    else if(s[i]==='√'){o+='\\sqrt{}';i++;}
+    else{o+=s[i];i++;}
+  }
+  return o;
+}
+function _kx(t){try{return katex.renderToString(t,{throwOnError:false});}catch(e){return t;}}
+function M(s){
+  s=String(s);
+  if(typeof katex==='undefined'){
+    return s.replace(/\^(\d)/g,'<sup>$1</sup>').replace(/√\{([^}]*)\}/g,'√$1').replace(/F\{([^|}]*)\|([^}]*)\}/g,'($1)/($2)').replace(/\*([a-zA-Z])\*/g,'<i class="v">$1</i>');
+  }
+  let out='',buf='';
+  const flush=()=>{out+=buf.replace(/\^(\d)/g,'<sup>$1</sup>').replace(/\*([a-zA-Z])\*/g,'<i class="v">$1</i>');buf='';};
+  for(let i=0;i<s.length;){
+    const isAtom=s.startsWith('√',i)||s.startsWith('F{',i);
+    if(isAtom){
+      let j;
+      if(s.startsWith('F{',i))j=_bal(s,i+1)+1;
+      else if(s.startsWith('√{',i))j=_bal(s,i+1)+1;
+      else{j=i+1;while(/\d/.test(s[j]||''))j++;}
+      let coef='';const m=buf.match(/(\d+)$/);
+      if(m){coef=m[1];buf=buf.slice(0,-coef.length);}
+      let atom=s.slice(i,j);
+      let sup='';const sm=s.slice(j).match(/^\^(\d)/);
+      if(sm){atom+='^'+sm[1];j+=2;}
+      flush();out+=_kx(_tex(coef+atom));i=j;
+    }else{buf+=s[i];i++;}
+  }
+  flush();return out;
+}
+/* ---- 図の描画 ---- */
+function view(box,W,H,pad){
+  const k=Math.min((W-2*pad)/(box[2]-box[0]),(H-2*pad)/(box[3]-box[1]));
+  const ox=(W-k*(box[2]-box[0]))/2-k*box[0];
+  const oy=(H+k*(box[3]-box[1]))/2+k*box[1];
+  return {k,p:(x,y)=>[ox+k*x,oy-k*y]};
+}
+function renderFig(F,step){
+  const W=F.w||480,H=F.h||320;
+  const v=view(F.box,W,H,F.pad===undefined?18:F.pad);
+  let o='';
+  const vis=op=>{op=op||{};return (op.s||0)<=step && !(op.e!==undefined&&step>=op.e);};
+  const P=(p)=>v.p(p[0],p[1]);
+  const pstr=a=>a.map(q=>P(q).map(z=>z.toFixed(1)).join(',')).join(' ');
+  const g={
+    v,
+    poly(pts,cls,op){ if(vis(op)) o+=`<polygon class="${cls||'tri'}" points="${pstr(pts)}"/>`; },
+    line(a,b,cls,op){ if(vis(op)){const A=P(a),B=P(b);o+=`<line class="ln ${cls||''}" x1="${A[0].toFixed(1)}" y1="${A[1].toFixed(1)}" x2="${B[0].toFixed(1)}" y2="${B[1].toFixed(1)}"/>`;} },
+    t(p,s,dx,dy,op){ if(vis(op)){op=op||{};const A=P(p);
+      if(/√|F\{/.test(s)&&typeof katex!=='undefined'){const fs=({s:15,m:18,b:22})[op.c||'s'];const X=A[0]+(dx||0),Y=A[1]+(dy||0);
+        o+=`<foreignObject x="${(X-70).toFixed(1)}" y="${(Y-22).toFixed(1)}" width="140" height="44" style="overflow:visible"><div xmlns="http://www.w3.org/1999/xhtml" class="flab" style="font-size:${fs}px;color:${op.col||'#26323f'}">${M(s)}</div></foreignObject>`;
+      } else o+=`<text class="lab ${op.c||'s'}" x="${(A[0]+(dx||0)).toFixed(1)}" y="${(A[1]+(dy||0)).toFixed(1)}"${op.col?` style="--lf:${op.col}"`:''}>${s}</text>`;} },
+    ra(p,d1,d2,op){ if(vis(op)){const A=P(p),px=(op&&op.px)||12;const n1=Math.hypot(d1[0],d1[1])||1,n2=Math.hypot(d2[0],d2[1])||1;const e1=[d1[0]*px/n1,-d1[1]*px/n1],e2=[d2[0]*px/n2,-d2[1]*px/n2];
+      o+=`<path class="ra" d="M${A[0]+e1[0]},${A[1]+e1[1]} L${A[0]+e1[0]+e2[0]},${A[1]+e1[1]+e2[1]} L${A[0]+e2[0]},${A[1]+e2[1]}"/>`;} },
+    dot(p,op){ if(vis(op)){const A=P(p);o+=`<circle class="dot" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" r="3.4"/>`;} },
+    circ(c,r,cls,op){ if(vis(op)){const A=P(c);o+=`<circle class="${cls||'plain'}" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" r="${(r*v.k).toFixed(1)}"/>`;} },
+    /* 楕円。half:'front'(下半分)・'back'(上半分) */
+    ell(c,rx,ry,cls,op){ if(vis(op)){op=op||{};const A=P(c),RX=rx*v.k,RY=ry*v.k;
+      if(!op.half){o+=`<ellipse class="${cls||'plain'}" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" rx="${RX.toFixed(1)}" ry="${RY.toFixed(1)}"/>`;}
+      else{ const x0=A[0]-RX,x1=A[0]+RX;
+        if(op.half==='front') o+=`<path class="ln" d="M${x0},${A[1]} A${RX},${RY} 0 0 0 ${x1},${A[1]}"/>`;
+        else o+=`<path class="ln dash" d="M${x0},${A[1]} A${RX},${RY} 0 0 1 ${x1},${A[1]}"/>`; } } },
+    /* 角度の弧（数学座標の角 a0→a1 ラジアン） */
+    arc(c,r,a0,a1,col,op){ if(vis(op)){const A=P(c);let d='';for(let i=0;i<=14;i++){const a=a0+(a1-a0)*i/14;d+=(i?'L':'M')+(A[0]+r*Math.cos(a)).toFixed(1)+','+(A[1]-r*Math.sin(a)).toFixed(1);}
+      o+=`<path d="${d}" fill="none" stroke="${col||'#d63a3a'}" stroke-width="2.6"/>`;} }
+  };
+  F.f(g,step);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="問題の図形：色付きの線は注目する辺、赤い破線は補助線を表します" shape-rendering="geometricPrecision"><title>三平方の定理の図形</title>${o}</svg>`;
+}
+/* 直角三角形：(0,0),(w,0),(w,h)・直角は右下 */
+function RT(g,o){
+  const w=o.w,h=o.h,len=Math.hypot(w,h);
+  g.poly([[0,0],[w,0],[w,h]],o.cls||'tri');
+  g.ra([w,0],[-1,0],[0,1],{px:13});
+  if(o.lb!==undefined) g.t([w/2,0],o.lb,0,19,{c:'m'});
+  if(o.lr!==undefined) g.t([w,h/2],o.lr,22,0,{c:'m'});
+  if(o.lh!==undefined) g.t([w/2,h/2],o.lh,-22*h/len,-22*w/len,{c:'m'});
+}
+/* 直方体（底面EFGH・上面ABCD、A-E, B-F, C-G, D-H）  EF=w, FG=d(奥行き), GC=h */
+function cuboid(g,w,d,h,opt){
+  opt=opt||{}; const ox=d*0.42, oy=d*0.32;
+  const E=[0,0],F=[w,0],G=[w+ox,oy],H=[ox,oy],A=[0,h],B=[w,h],C=[w+ox,oy+h],D=[ox,oy+h];
+  g.poly([A,B,C,D],'plain'); g.poly([A,B,F,E],'plain'); g.poly([B,C,G,F],'plain');
+  g.line(E,H,'dash'); g.line(H,G,'dash'); g.line(H,D,'dash');
+  const names={A,B,C,D,E,F,G,H};
+  if(opt.names!==false){
+    g.t(A,'A',-11,-10);g.t(B,'B',-2,-15);g.t(C,'C',12,-6);g.t(D,'D',-6,-12);
+    g.t(E,'E',-11,12);g.t(F,'F',10,13);g.t(G,'G',12,8);g.t(H,'H',-12,8);
+  }
+  return names;
+}
+/* ---- 例題 ---- */
+function mountExample(host,E){
+  host.className='ex';
+  host.innerHTML=`<div class="exh">${E.title}</div><div class="exq">${M(E.q)}</div>
+  <div class="fig"></div><div class="steptext"></div><div class="formula"></div>
+  <div class="ctrl"><button class="ghost" data-a="prev">◀ もどる</button><button data-a="next">次へ ▶</button><button class="ghost" data-a="reset">最初から</button><span class="dots"></span></div>`;
+  let i=0; const n=E.steps.length;
+  const q=s=>host.querySelector(s);
+  function render(){
+    q('.fig').innerHTML=renderFig(E.fig,i);
+    q('.steptext').innerHTML=M(E.steps[i].t);
+    q('.formula').innerHTML=E.steps[i].f?E.steps[i].f.split('¶').map(x=>'<span class="ln">'+M(x)+'</span>').join(''):'';
+    q('.dots').textContent='STEP '+(i+1)+' / '+n;
+    q('[data-a=prev]').disabled=i===0; q('[data-a=next]').disabled=i===n-1;
+  }
+  q('[data-a=prev]').onclick=()=>{if(i>0){i--;render();}};
+  q('[data-a=next]').onclick=()=>{if(i<n-1){i++;render();}};
+  q('[data-a=reset]').onclick=()=>{i=0;render();};
+  render();
+}
+/* ---- 練習 ---- */
+const SOLVED={n:0,total:0};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function mountPractice(host,PR){
+  const wrap=document.createElement('div');
+  PR.items.forEach((it,idx)=>{
+    SOLVED.total++;
+    const d=document.createElement('div'); d.className='pr';
+    d.innerHTML=`<div class="qt">${PR.no||'練習'}(${idx+1})　${M(it.q)}</div>${it.fig?`<div class="fig">${renderFig(it.fig,0)}</div>`:''}
+      <div class="opts"></div><div class="fb"></div><div class="sol"></div><button class="hintbtn">💡 ヒント</button>`;
+    const opts=d.querySelector('.opts'),fb=d.querySelector('.fb'),sol=d.querySelector('.sol');
+    let done=false;
+    shuffle(it.ch.map((c,k)=>({c,k}))).forEach(o=>{
+      const b=document.createElement('button'); b.innerHTML=M(o.c);
+      b.onclick=()=>{
+        if(done) return;
+        if(o.k===it.a){
+          done=true; b.classList.add('right'); fb.className='fb ok'; fb.textContent='⭕ 正解です！　解き方を確かめましょう。';
+          sol.innerHTML=it.sol.split('¶').map(x=>'<span class="ln">'+M(x)+'</span>').join(''); sol.classList.add('on');
+          if(it.fig){ d.querySelector('.fig').innerHTML=renderFig(it.fig,99); }
+          SOLVED.n++; updateProg();
+        }else{ b.classList.add('wrong'); fb.className='fb ng'; fb.textContent='もう一度考えてみましょう。「ヒント」も使えます。'; }
+      };
+      opts.appendChild(b);
+    });
+    d.querySelector('.hintbtn').onclick=()=>{ $('modal-t').innerHTML=M(it.hint); $('modal').classList.add('on'); };
+    wrap.appendChild(d);
+  });
+  host.appendChild(wrap);
+}
+function updateProg(){
+  const e=$('prog'); if(e) e.textContent=SOLVED.n+' / '+SOLVED.total+' 問 正解';
+  if(SOLVED.n===SOLVED.total && SOLVED.total>0){ $('clear').style.display='block'; startPetals(); }
+}
+/* ---- 花吹雪 ---- */
+function startPetals(){
+  const cv=$('petals'),ctx=cv.getContext('2d');
+  cv.width=innerWidth;cv.height=innerHeight;
+  const P=[];for(let i=0;i<140;i++)P.push({x:Math.random()*cv.width,y:-Math.random()*cv.height,r:5+Math.random()*7,vy:1.2+Math.random()*2.2,vx:-.8+Math.random()*1.6,rot:Math.random()*6.28,vr:-.05+Math.random()*.1,c:['#ffb7d1','#ff9ec2','#ffd1e1','#ffc2d9'][i%4]});
+  const t0=performance.now();
+  (function loop(now){ctx.clearRect(0,0,cv.width,cv.height);
+    P.forEach(p=>{p.y+=p.vy;p.x+=p.vx+Math.sin((now+p.r*200)/600)*.6;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;ctx.beginPath();ctx.ellipse(0,0,p.r,p.r*.6,0,0,6.28);ctx.fill();ctx.restore();});
+    if(now-t0<6000)requestAnimationFrame(loop);else ctx.clearRect(0,0,cv.width,cv.height);})(t0);
+}
+/* ---- ページ組み立て ---- */
+function buildPage(U){
+  document.title=U.title+'｜江原予備校 GAMBA';
+  const nav=UNITS.map(u=>`<a href="${u[0]}"${u[0]===U.file?' class="now"':''}>${u[1]}</a>`).join('');
+  let h=`<header class="hero"><small>江原予備校　GAMBA　中学数学　図形　三平方の定理</small><h1>${U.title}</h1><p>${U.lead}</p></header><nav class="units">${nav}</nav><main></main>
+  <footer>江原予備校　GAMBA 中学数学　三平方の定理</footer>
+  <div class="modal" id="modal"><div class="box"><h4>💡 ヒント</h4><div id="modal-t"></div><div style="text-align:right;margin-top:10px"><button id="modal-x">とじる</button></div></div></div><canvas id="petals"></canvas>`;
+  document.body.innerHTML=h;
+  const main=document.querySelector('main');
+  let sec=null;
+  const newSec=(title)=>{sec=document.createElement('section');sec.className='card';if(title)sec.innerHTML='<h2>'+title+'</h2>';main.appendChild(sec);};
+  newSec(null);
+  U.blocks.forEach(b=>{
+    if(b.h2){newSec(b.h2);}
+    else if(b.html){const d=document.createElement('div');d.innerHTML=M2(b.html);sec.appendChild(d);}
+    else if(b.ex){const d=document.createElement('div');sec.appendChild(d);mountExample(d,b.ex);}
+    else if(b.pr){const t=document.createElement('h3');t.textContent=b.pr.no+'（全部で'+b.pr.items.length+'問）';sec.appendChild(t);mountPractice(sec,b.pr);}
+  });
+  const fin=document.createElement('section');fin.className='card';
+  fin.innerHTML='<h3>この単元の練習　<span id="prog">0 / '+SOLVED.total+' 問 正解</span></h3><div id="clear">🌸 全問正解です！　よくがんばりました。 🌸</div>';
+  main.appendChild(fin);
+  main.insertAdjacentHTML("beforeend",`<div class="pn"><a class="prev" href="sanheihou-3-hojo1.html">◀ 前へ：③ 補助線①</a><a href="sanheihou-5-zahyo.html">次へ：⑤ 座標 ▶</a></div>`);
+  $('modal-x').onclick=()=>$('modal').classList.remove('on');
+  $('modal').addEventListener('click',e=>{if(e.target.id==='modal')$('modal').classList.remove('on');});
+}
+/* html ブロック内の M() 変換（タグ内の属性は触らない簡易版） */
+function M2(s){return M(s);}
+
+const V=(g,P,name,dx,dy,op)=>{g.t(P,name,dx,dy,Object.assign({c:'m'},op||{}));};
+const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+/* 五角形ABCDE（長方形ABCFから△EDFを切り取った形） */
+function pentFig(ab,bc,ef,fd,ed,labels,showAux){
+  const B=[0,0],C=[bc,0],F=[bc,ab],A=[0,ab],E=[bc-ef,ab],D=[bc,ab-fd];
+  return {box:[-bc*0.12,-ab*0.28,bc*1.12,ab*1.28],w:470,h:290,f:(g,s)=>{
+    g.poly([A,B,C,D,E],'tri'); g.poly([E,D,F],'cut',{s:1});
+    g.line(E,D,'main'); g.ra(F,[-1,0],[0,-1],{s:1,px:11});
+    V(g,A,'A',-12,-6);V(g,B,'B',-12,12);V(g,C,'C',13,12);V(g,D,'D',14,4);V(g,E,'E',-2,-14);V(g,F,'F',14,-10,{s:1});
+    g.t(mid(A,B),ab+'cm',-30,0,{c:'m'});g.t(mid(B,C),bc+'cm',0,22,{c:'m'});
+    g.t(mid(E,F),ef+'cm',0,-16,{c:'m'});g.t(mid(E,D),ed+'cm',-30,-4,{c:'m'});
+    g.t(mid(F,D),fd,16,0,{c:'m',s:2,col:'#d63a3a'});
+  }};
+}
+/* 円の中の弦：半径r、中心から弦までの距離d */
+function chordFig(r,d,labels,aux){
+  const hb=Math.sqrt(r*r-d*d),O=[0,0],A=[-hb,-d],B=[hb,-d],C=[0,-d];
+  return {box:[-r*1.25,-r*1.25,r*1.25,r*1.25],w:380,h:380,f:(g,s)=>{
+    g.circ(O,r,'plain'); if(labels.tri) g.poly([O,A,B],'tri');
+    g.line(A,B,''); g.line(O,C,''); g.ra(C,[1,0],[0,1],{px:11});
+    if(labels.rad){ g.line(O,B,'aux',{s:aux}); }
+    if(labels.radA){ g.line(O,A,'',{}); }
+    g.dot(O);V(g,O,'O',-4,-16);V(g,A,'A',-14,10);V(g,B,'B',14,10);V(g,C,'C',0,17,{});
+    if(labels.oc) g.t(mid(O,C),labels.oc,-26,0,{c:'m'});
+    if(labels.ob) g.t(mid(O,B),labels.ob,18,-14,{c:'m',s:labels.obs||0});
+    if(labels.oa) g.t(mid(O,A),labels.oa,-18,-14,{c:'m'});
+    if(labels.ab) g.t(mid(A,B),labels.ab,0,38,{c:'m'});
+    if(labels.half){ g.t(mid(C,B),labels.half,0,-16,{c:'m',s:labels.hs||2,col:'#d63a3a'}); }
+  }};
+}
+/* 接線：中心O、半径r、PO=dist */
+function tanFig(r,dist,lab){
+  const T=[r*r/dist,r*Math.sqrt(dist*dist-r*r)/dist],O=[0,0],P=[dist,0];
+  const l1=Math.hypot(T[0],T[1]),l2=Math.hypot(P[0]-T[0],P[1]-T[1]);
+  return {box:[-r*1.3,-r*1.3,dist+r*0.7,r*1.4],w:480,h:300,f:(g,s)=>{
+    g.circ(O,r,'plain'); g.line(O,P,''); g.line(P,T,'');
+    g.line(O,T,'aux',{s:1}); g.ra(T,[-T[0]/l1,-T[1]/l1],[(P[0]-T[0])/l2,(P[1]-T[1])/l2],{s:1,px:11});
+    g.dot(O);V(g,O,'O',-4,16);V(g,P,'P',10,16);V(g,T,'T',-6,-16);
+    g.t(mid(O,T),lab.r,-24,-8,{c:'m'});g.t(mid(O,P),lab.po,0,22,{c:'m'});
+    g.t(mid(P,T),lab.pt,22,-12,{c:'m',col:'#d63a3a',s:3});
+  }};
+}
+
+/* 2つの円と共通接線 mode:'out'(外側) 'in'(内側) */
+function twoCircFig(R,r,AB,mode,lab,auxS){
+  const A=[0,0],B=[AB,0],P=[0,mode==='out'?-r:-r];
+  const O1=mode==='out'?[0,-R]:[0,R], O2=mode==='out'?[AB,-r]:[AB,-r];
+  const x0=-Math.max(R,r)-1.5, x1=AB+Math.max(R,r)+1.5;
+  const yt=mode==='out'?1.5:R+1.5, yb=mode==='out'?-2*R-1.5:-Math.max(r,0)-0.5-(mode==='in'?2*r-r+0:0);
+  const box=mode==='out'?[x0,-2*R-1,x1,2]:[x0,-2*r-1,x1,2*R+1];
+  return {box,w:480,h:300,f:(g,st)=>{
+    g.circ(O1,R,'plain');g.circ(O2,r,'plain');
+    g.line([x0,0],[x1,0],'');
+    g.line(O1,A,'');g.line(O2,B,'');
+    g.dot(O1);g.dot(O2);
+    if(mode==='in'){g.line(A,P,'aux',{s:1});}
+    g.line(O1,O2,'aux',{s:1});g.line(O2,P,'aux',{s:1});
+    if(mode==='out')g.line(O1,P,'aux',{s:1});
+    g.ra(A,[1,0],[0,mode==='out'?-1:1],{s:0,px:9});g.ra(B,[-1,0],[0,mode==='out'?-1:-1],{s:0,px:9});
+    g.ra(P,mode==='out'?[0,1]:[0,1],[1,0],{s:1,px:9});
+    V(g,A,'A',-4,-14);V(g,B,'B',4,-14);V(g,O1,'O',-14,0);V(g,O2,"O'",14,0);V(g,P,'P',mode==='out'?12:-12,mode==='out'?16:12,{s:1});
+    if(lab.R) g.t(mid(O1,A),lab.R,mode==='out'?-40:-34,mode==='out'?-24:-14,{c:'m'});
+    if(lab.r) g.t(mid(O2,B),lab.r,26,0,{c:'m'});
+    if(lab.d) g.t(mid(O1,O2),lab.d,0,-14,{c:'m',s:lab.ds||0,col:'#d63a3a'});
+    if(lab.h) g.t(mid(O1,P),lab.h,mode==='out'?-18:-26,mode==='out'?14:26,{c:'m',s:lab.hs||1,col:'#d63a3a'});
+    if(lab.ab) g.t(mid(A,B),lab.ab,0,mode==='out'?-14:18,{c:'m',s:lab.abs||0});
+  }};
+}
+const UNIT={file:'sanheihou-4-hojo2.html',title:'④ 補助線を入れて考える②（複合図形・円）',lead:'図形を長方形などで囲む／円では半径や垂線を引いて、直角三角形を見つけます。',blocks:[
+{html:`<p class="lead">補助線の入れ方には、ほかにも大切なパターンがあります。</p>
+<div class="point"><b class="t">ポイント</b>
+<ul style="margin:4px 0 0">
+<li><b>複合図形</b> → 大きな長方形で囲み、「長方形 − 切り取った直角三角形」と考える。</li>
+<li><b>円の弦</b> → 中心Oから弦ABに垂線OCをおろすと、<b>C は弦ABの真ん中</b>（AC ＝ CB）。半径を結ぶと直角三角形ができる。</li>
+<li><b>円の接線</b> → 接線は、接点を通る半径に<b>垂直</b>。つまり ∠OTP ＝ 90°。</li>
+</ul></div>`},
+{h2:'1. 複合図形の面積'},
+{ex:{title:'例題1',q:'図の五角形 ABCDE の面積を求めなさい。（AB＝12cm、BC＝20cm、EF＝6cm、ED＝10cm。F は、長方形 ABCF の4つ目の頂点）',
+ fig:pentFig(12,20,6,8,10),steps:[
+ {t:'五角形のままでは面積が求められません。ふくらませて、長方形 ABCF をつくり、<b>切り取られた三角形 EDF</b> を考えます。'},
+ {t:'五角形 ＝ 長方形 ABCF − 直角三角形 EDF です。三角形 EDF の面積を求めるには、FD が必要です。',f:'五角形 ＝ 長方形ABCF − △EDF'},
+ {t:'直角三角形 EDF（斜辺 ED ＝ 10cm）で三平方の定理を使います。',f:'ED^2 ＝ EF^2 ＋ FD^2¶10^2 ＝ 6^2 ＋ FD^2¶FD^2 ＝ 64　FD ＞ 0 より　FD ＝ <span class="hi">8</span> cm'},
+ {t:'面積を計算します。',f:'12 × 20 − 8 × 6 × F{1|2}¶＝ 240 − 24 ＝ <span class="hi">216</span>　（答）216 cm^2'}]}},
+{h2:'2. 円の弦'},
+{ex:{title:'例題2',q:'半径5cmの円Oの弦 AB があります。中心 O から AB にひいた垂線の足を C とすると、OC ＝ 4cm でした。AB の長さを求めなさい。',
+ fig:chordFig(5,4,{oc:'4cm',rad:true,ob:'5cm',obs:1,half:'3',hs:2},1),steps:[
+ {t:'円の弦に、中心から垂線をおろすと、その足 C は弦の真ん中です。AC ＝ CB。まず、半径 OB をひいて、直角三角形 OCB をつくります。'},
+ {t:'OB は円の半径なので 5cm です。直角三角形 OCB（斜辺 OB）で、三平方の定理を使います。',f:'OB^2 ＝ OC^2 ＋ CB^2¶5^2 ＝ 4^2 ＋ CB^2'},
+ {t:'CB の2乗を求めます。',f:'CB^2 ＝ 25 − 16 ＝ 9　CB ＞ 0 より　CB ＝ <span class="hi">3</span> cm'},
+ {t:'C は AB の真ん中なので、AB は CB の2倍です。',f:'AB ＝ 2 × CB ＝ 2 × 3 ＝ <span class="hi">6</span>　（答）6 cm'}]}},
+{ex:{title:'例題3',q:'半径10cmの円Oで、弦 AB ＝ 12cm のとき、△OAB の面積を求めなさい。',
+ fig:chordFig(10,8,{ab:'12cm',rad:true,radA:true,oa:'10cm',ob:'10cm',tri:true,half:'6',oc:'?'},0),steps:[
+ {t:'△OAB は OA ＝ OB ＝ 10cm の二等辺三角形です。O から AB に垂線 OC をおろすと、高さ OC がわかります。'},
+ {t:'C は AB の真ん中なので、CB ＝ 12 ÷ 2 ＝ 6cm です。',f:'CB ＝ <span class="hi">6</span> cm'},
+ {t:'直角三角形 OCB（斜辺 OB ＝ 10cm）で三平方の定理を使います。',f:'OB^2 ＝ BC^2 ＋ OC^2¶10^2 ＝ 6^2 ＋ OC^2¶OC^2 ＝ 64　OC ＞ 0 より　OC ＝ 8 cm'},
+ {t:'底辺を AB、高さを OC として面積を求めます。',f:'△OAB ＝ 12 × 8 × F{1|2} ＝ <span class="hi">48</span>　（答）48 cm^2'}]}},
+{h2:'3. 円の接線'},
+{ex:{title:'例題4',q:'半径4cmの円Oに、接線 PT がひいてあります（T は接点）。PO ＝ 10cm のとき、PT の長さを求めなさい。',
+ fig:tanFig(4,10,{r:'4cm',po:'10cm',pt:'PT'}),steps:[
+ {t:'円の接線は、接点を通る半径に垂直です。そこで半径 OT をひきます。',f:'∠OTP ＝ <span class="hi">90°</span>'},
+ {t:'△POT は ∠T ＝ 90° の直角三角形で、斜辺は PO です。（まっすぐ向かい合うのが直角ではなく、<b>直角の向かい側が斜辺</b>）',f:'斜辺 ＝ PO ＝ 10 cm'},
+ {t:'三平方の定理を使います。',f:'PO^2 ＝ PT^2 ＋ TO^2¶10^2 ＝ PT^2 ＋ 4^2¶PT^2 ＝ 100 − 16 ＝ 84'},
+ {t:'84 ＝ 4 × 21 と分けて、4 をルートの外に出します。',f:'PT ＞ 0 より　PT ＝ √{84} ＝ <span class="hi">2√{21}</span>　（答）2√{21} cm'}]}},
+{h2:'4. 2つの円の共通接線'},
+{ex:{title:'例題5',q:'半径 9cm の円O と半径 4cm の円O′が外側で接しています。2つの円に共通な接線が、円O、O′とそれぞれ A、B で接するとき、AB の長さを求めなさい。',fig:twoCircFig(9,4,12,'out',{R:'9cm',r:'4cm',d:'13',ds:2,h:'5',hs:2,ab:'AB',abs:0}),steps:[
+ {t:'接点 A、B と円の中心を結ぶと、OA ⊥ AB、O′B ⊥ AB（接線は接点を通る半径に垂直）です。OA と O′B は平行になります。'},
+ {t:'O′ から OA に垂線 O′P をひくと、四角形 ABO′P は長方形になり、AB ＝ PO′ です。直角三角形 OPO′ をつくります。',f:'OO′ ＝ 9 ＋ 4 ＝ 13　OP ＝ 9 − 4 ＝ 5'},
+ {t:'直角三角形 OPO′ で三平方の定理を使います。',f:'13^2 ＝ PO′^2 ＋ 5^2¶PO′^2 ＝ 169 − 25 ＝ 144　PO′ ＝ 12¶AB ＝ PO′ ＝ <span class="hi">12</span>　（答）12 cm'}]}},
+{ex:{title:'例題6',q:'半径 4cm の円O と半径 2cm の円O′があり、中心間の距離 OO′ は 10cm です。2つの円の間を通る共通接線が、A、B で接するとき、AB の長さを求めなさい。',fig:twoCircFig(4,2,8,'in',{R:'4cm',r:'2cm',d:'10cm',ds:0,h:'6',hs:2,ab:'AB',abs:0}),steps:[
+ {t:'OA ⊥ AB、O′B ⊥ AB です。OA をのばして、O′ から垂線 O′P をひきます。'},
+ {t:'四角形 ABO′P は長方形なので、AB ＝ PO′、AP ＝ 2 です。OP は半径の和になります。',f:'OP ＝ 4 ＋ 2 ＝ 6'},
+ {t:'直角三角形 OPO′ で三平方の定理を使います。',f:'10^2 ＝ PO′^2 ＋ 6^2¶PO′^2 ＝ 100 − 36 ＝ 64　PO′ ＝ 8¶AB ＝ <span class="hi">8</span>　（答）8 cm'}]}},
+{html:`<div class="point"><b class="t">2円と共通接線の整理</b>
+<table class="rt"><tr><th>接線の種類</th><th>中心を結ぶ線に直角な辺</th><th>接点間 AB</th></tr>
+<tr><td>外側の共通接線</td><td>半径の差 R−r</td><td>√{d^2 − (R−r)^2}</td></tr>
+<tr><td>2円の間を通る共通接線</td><td>半径の和 R＋r</td><td>√{d^2 − (R＋r)^2}</td></tr></table>
+<p style="margin:4px 0">d は中心間距離、R・r は半径です。必ず<b>接点と中心を結び、直角三角形を確認</b>してから計算しましょう。2円が離れている場合（d＞R＋r）はどちらの種類も引けます。</p></div>`},
+{h2:'5. 2円と直線：追加例題'},
+{ex:{title:'追加例題7',q:'半径5cmと3cmの2円で、中心間の距離は10cmです。外側の共通接線の接点間ABを求めなさい。',fig:twoCircFig(5,3,Math.sqrt(96),'out',{R:'5cm',r:'3cm',d:'10cm',ab:'AB'}),steps:[
+{t:'共通接線に接する半径を2本ひきます。2つの半径は接線に垂直なので平行です。'},
+{t:'外側の共通接線では、直角三角形の一辺は半径の<b>差</b>です。',f:'5 − 3 ＝ 2 cm'},
+{t:'中心間10cmを斜辺として三平方の定理を使います。',f:'AB^2 ＋ 2^2 ＝ 10^2¶AB^2 ＝ 96'},
+{t:'正の長さを求めます。',f:'AB ＝ √{96} ＝ <span class="hi">4√{6}</span>　（答）4√{6} cm'}]}},
+{ex:{title:'追加例題8',q:'半径5cmと3cmの2円で、中心間の距離は10cmです。2円の間を通る共通接線の接点間ABを求めなさい。',fig:twoCircFig(5,3,6,'in',{R:'5cm',r:'3cm',d:'10cm',ab:'AB'}),steps:[
+{t:'接線は接点の半径に垂直です。今度は2円が接線の反対側にあるため、半径を足します。'},
+{t:'直角三角形の一辺は半径の<b>和</b>です。',f:'5 ＋ 3 ＝ 8 cm'},
+{t:'中心間10cmが斜辺です。',f:'AB^2 ＋ 8^2 ＝ 10^2¶AB^2 ＝ 36'},
+{t:'接点間の長さは、',f:'AB ＝ <span class="hi">6</span>　（答）6 cm'}]}},
+{h2:'練習'},
+{pr:{no:'練習',items:[
+ {q:'図の五角形 ABCDE の面積を求めなさい。（AB＝15cm、BC＝30cm、EF＝12cm、ED＝13cm）',fig:pentFig(15,30,12,5,13),ch:['420 cm²','450 cm²','390 cm²','435 cm²'],a:0,hint:'長方形 ABCF から △EDF をひきます。FD は ED² ＝ EF² ＋ FD² から求めます。13² − 12² ＝ (13＋12)(13−12) ＝ 25 です。',sol:'△EDF で　13^2 ＝ 12^2 ＋ FD^2　より　FD^2 ＝ 25　FD ＝ 5¶△EDF ＝ 12 × 5 × F{1|2} ＝ 30　長方形ABCF ＝ 15 × 30 ＝ 450¶450 − 30 ＝ 420　（答）420 cm^2'},
+ {q:'半径13cmの円Oの弦 AB があります。OC ⊥ AB、OC ＝ 12cm のとき、AB の長さを求めなさい。',fig:chordFig(13,12,{oc:'12cm',rad:true,ob:'13cm',half:'5',hs:99},1),ch:['10 cm','5 cm','24 cm','26 cm'],a:0,hint:'OB は半径で 13cm。△OCB で CB² ＝ 13² − 12² ＝ 25。AB は CB の2倍です。',sol:'△OCB で　CB^2 ＋ 12^2 ＝ 13^2　より　CB^2 ＝ 25　CB ＝ 5¶AB ＝ 2 × CB ＝ 10　（答）10 cm'},
+ {q:'円Oの弦 AB（AB ＝ 10cm）があり、OB ＝ √{34} cm です。△OAB の面積を求めなさい。',fig:(()=>{const O=[0,0],A=[-5,-3],B=[5,-3],M=[0,-3];return {box:[-7,-5,7,1.6],w:470,h:280,f:(g,s)=>{g.poly([O,A,B],'tri');g.line(O,M,'aux',{s:1});g.ra(M,[1,0],[0,1],{s:1,px:10});V(g,O,'O',0,-14);V(g,A,'A',-12,10);V(g,B,'B',12,10);V(g,M,'M',0,16,{s:1});g.t(mid(O,B),'√34cm',34,-8,{c:'m'});g.t(mid(A,B),'10cm',0,36,{c:'m'});g.t(mid(O,M),'3',-12,0,{c:'m',s:99,col:'#d63a3a'});}};})(),ch:['15 cm²','30 cm²','25 cm²','17 cm²'],a:0,hint:'O から AB に垂線 OM をおろすと、AM ＝ BM ＝ 5。△OMB で OM² ＋ 5² ＝ (√34)² ＝ 34。',sol:'AM ＝ BM ＝ 10 ÷ 2 ＝ 5¶△OMB で　OM^2 ＋ 5^2 ＝ (√{34})^2 ＝ 34　より　OM^2 ＝ 9　OM ＝ 3¶△OAB ＝ 10 × 3 × F{1|2} ＝ 15　（答）15 cm^2'},
+ {q:'半径2cmの円Oに、接線 PT がひいてあります（T は接点）。PO ＝ √{13} cm のとき、PT の長さを求めなさい。',fig:tanFig(2,Math.sqrt(13),{r:'2cm',po:'√13cm',pt:'PT'}),ch:['3 cm','9 cm','√{17} cm','√{13} cm'],a:0,hint:'OT をひくと ∠OTP ＝ 90°。斜辺は PO です。PT² ＋ 2² ＝ (√13)²。',sol:'∠OTP ＝ 90°　より　PT^2 ＋ TO^2 ＝ PO^2¶PT^2 ＋ 2^2 ＝ (√{13})^2　PT^2 ＝ 13 − 4 ＝ 9¶PT ＞ 0 より　PT ＝ 3　（答）3 cm'},
+ {q:'半径 8cm の円O と半径 2cm の円O′が外側で接しています。共通接線の接点を A、B とするとき、AB の長さを求めなさい。',fig:twoCircFig(8,2,8,'out',{R:'8cm',r:'2cm',d:'?',ds:99,h:'?',hs:99}),ch:['8 cm','10 cm','6 cm','4√{3} cm'],a:0,hint:'OO′ ＝ 8 ＋ 2 ＝ 10、OP ＝ 8 − 2 ＝ 6。直角三角形 OPO′ で PO′ ＝ AB を求めます。',sol:'OO′ ＝ 10　OP ＝ 8 − 2 ＝ 6¶10^2 ＝ AB^2 ＋ 6^2　AB^2 ＝ 64　AB ＝ 8　（答）8 cm'},
+ {q:'半径5cmと3cmの2円の中心間距離が10cmのとき、外側の共通接線の接点間ABは何cmですか。',fig:twoCircFig(5,3,Math.sqrt(96),'out',{R:'5cm',r:'3cm',d:'10cm',ab:'AB'}),ch:['4√{6} cm','6 cm','2√{21} cm','8 cm'],a:0,hint:'外側なので半径の差は2cm。中心間の長さ10cmが斜辺です。',sol:'AB^2 ＝ 10^2 − (5−3)^2 ＝ 100 − 4 ＝ 96¶AB ＝ √{96} ＝ 4√{6}　（答）4√{6} cm'},
+ {q:'半径5cmと3cmの2円の中心間距離が10cmのとき、2円の間を通る共通接線の接点間ABは何cmですか。',fig:twoCircFig(5,3,6,'in',{R:'5cm',r:'3cm',d:'10cm',ab:'AB'}),ch:['6 cm','4√{6} cm','8 cm','√{91} cm'],a:0,hint:'内側を通る接線なので半径の和は8cm。',sol:'AB^2 ＝ 10^2 − (5＋3)^2 ＝ 100 − 64 ＝ 36¶AB ＝ 6　（答）6 cm'},
+ {q:'半径5cmと2cmの2円に外側の共通接線ABをひいたところ、AB＝12cmでした。中心間距離OO′を求めなさい。',fig:twoCircFig(5,2,12,'out',{R:'5cm',r:'2cm',d:'?',ds:99,ab:'12cm'}),ch:['3√{17} cm','15 cm','√{119} cm','13 cm'],a:0,hint:'半径の差は3cm。中心間距離が斜辺です。',sol:'OO′^2 ＝ 12^2 ＋ (5−2)^2 ＝ 144 ＋ 9 ＝ 153¶OO′ ＝ √{153} ＝ 3√{17}　（答）3√{17} cm'},
+ {q:'半径3cmと2cmの2円に、2円の間を通る共通接線ABをひいたところ、AB＝12cmでした。中心間距離OO′は何cmですか。',fig:twoCircFig(3,2,12,'in',{R:'3cm',r:'2cm',d:'?',ds:99,ab:'12cm'}),ch:['13 cm','11 cm','√{139} cm','17 cm'],a:0,hint:'半径の和は5cm。中心間距離が斜辺です。',sol:'OO′^2 ＝ 12^2 ＋ (3＋2)^2 ＝ 144 ＋ 25 ＝ 169¶OO′ ＝ 13　（答）13 cm'},
+ {q:'半径4cmと2cmの2円が外側で接しています。外側の共通接線の接点間ABは何cmですか。',fig:twoCircFig(4,2,Math.sqrt(32),'out',{R:'4cm',r:'2cm',d:'6cm',ab:'AB'}),ch:['4√{2} cm','2√{2} cm','6 cm','4 cm'],a:0,hint:'中心間距離は4＋2＝6cm、半径の差は2cm。',sol:'AB^2 ＝ (4＋2)^2 − (4−2)^2 ＝ 36 − 4 ＝ 32¶AB ＝ 4√{2}　（答）4√{2} cm'},
+ {q:'半径 3cm の円O と半径 2cm の円O′があり、OO′ ＝ 13cm です。2つの円の間を通る共通接線の接点を A、B とするとき、AB の長さを求めなさい。',fig:twoCircFig(3,2,12,'in',{R:'3cm',r:'2cm',d:'13cm',ds:0,h:'?',hs:99}),ch:['12 cm','√{165} cm','11 cm','5 cm'],a:0,hint:'OP ＝ 3 ＋ 2 ＝ 5。OO′ ＝ 13 が斜辺です。13² ＝ AB² ＋ 5²。',sol:'OP ＝ 3 ＋ 2 ＝ 5¶13^2 ＝ AB^2 ＋ 5^2　AB^2 ＝ 169 − 25 ＝ 144　AB ＝ 12　（答）12 cm'},
+]}}
+]};
+
+window.addEventListener('load',()=>buildPage(UNIT));
+</script></body></html>

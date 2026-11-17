@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三平方の定理｜江原予備校 GAMBA</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<style>:root{--ink:#26323f;--sub:#5b6b7a;--line:#d9e1e8;--bg:#f4f7fa;--card:#fff;--main:#1f6fb2;--main-d:#14507f;--ct:#ffe0b3;--ct-s:#d9822b;--ok:#1f9d55;--ng:#d64545}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic","BIZ UDGothic","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;line-height:1.85;font-size:17px}
+header.hero{background:linear-gradient(135deg,#1f6fb2,#2e8fd1);color:#fff;padding:30px 20px 26px;text-align:center}
+header.hero small{display:block;opacity:.85;letter-spacing:.12em}
+header.hero h1{margin:6px 0 4px;font-size:28px;line-height:1.4}
+header.hero p{margin:0;opacity:.95}
+nav.units{background:#fff;border-bottom:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;justify-content:center}
+nav.units a{text-decoration:none;color:var(--main-d);background:#eaf3fb;padding:4px 11px;border-radius:999px;font-size:13.5px;white-space:nowrap}
+nav.units a.now{background:var(--main);color:#fff}
+main{max-width:860px;margin:0 auto;padding:14px 14px 80px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 24px;margin:18px 0;box-shadow:0 2px 8px rgba(40,70,100,.06)}
+h2{margin:0 0 8px;font-size:22px;color:var(--main-d);border-left:7px solid var(--main);padding-left:12px;line-height:1.5}
+h3{margin:6px 0;font-size:18px}
+.lead{color:var(--sub);margin:4px 0 12px}
+.point{background:#fff8e6;border:2px solid #f0c15a;border-radius:10px;padding:10px 16px;margin:12px 0}
+.point b.t{display:inline-block;background:#f0a81a;color:#fff;border-radius:6px;padding:0 10px;margin-right:8px;font-size:15px}
+.point .big{text-align:center;font-size:24px;font-weight:700;margin:4px 0}
+.ex{border:1px solid #cfe0ef;border-radius:12px;padding:14px 16px 16px;margin:16px 0;background:#fcfeff}
+.ex .exh{display:inline-block;background:var(--main);color:#fff;border-radius:6px;padding:0 12px;font-weight:700;margin-bottom:6px}
+.exq{font-weight:700;margin:2px 0 8px}
+.fig{background:#fbfdff;border:1px solid var(--line);border-radius:12px;padding:6px;text-align:center}
+.fig>svg{width:100%;max-width:520px;height:auto;display:inline-block}
+.steptext{min-height:78px;margin:10px 2px 4px}
+.formula{background:#f1f7fd;border:1px solid #cfe2f4;border-radius:10px;padding:8px 16px;min-height:54px;font-size:20px;line-height:2}
+.formula .ln{display:block}
+.formula .hi{background:#fff3b0;border-radius:4px;padding:0 4px}
+.ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+button{font-family:inherit;font-size:16px;border:none;border-radius:9px;padding:8px 16px;cursor:pointer;background:var(--main);color:#fff}
+button:hover{background:var(--main-d)}
+button:disabled{background:#b8c4cf;cursor:default}
+button.ghost{background:#eaf1f7;color:var(--main-d)}button.ghost:hover{background:#d8e6f2}
+.dots{margin-left:auto;color:var(--sub);font-size:14px}
+svg text{font-family:inherit}
+svg .lab{font-weight:700;fill:var(--lf,#26323f);text-anchor:middle;dominant-baseline:middle}
+svg .lab.s{font-size:15px}svg .lab.m{font-size:18px}svg .lab.b{font-size:22px}
+svg .tri{fill:var(--ct);stroke:var(--ct-s);stroke-width:2;stroke-linejoin:round}
+svg .plain{fill:#eaf4fd;stroke:#2f7fc0;stroke-width:2.2;stroke-linejoin:round}
+svg .cut{fill:#fde0e0;stroke:#d64545;stroke-width:1.8;stroke-dasharray:5 4}
+svg .green{fill:#c7eccf;stroke:#3f9a55;stroke-width:2}
+svg .blue{fill:#bcdcf7;stroke:#2f7fc0;stroke-width:2}
+svg .hl{fill:#ffe9a8;stroke:#d9822b;stroke-width:2.4;stroke-linejoin:round}
+svg .ln{stroke:#26323f;stroke-width:2.2;fill:none}
+svg .ln.aux{stroke:#d63a3a;stroke-width:2.6;stroke-dasharray:7 4}
+svg .ln.dash{stroke-dasharray:5 4;stroke-width:1.6;stroke-opacity:.65}
+svg .ln.hl{stroke:#e8892b;stroke-width:4}
+svg .ln.thin{stroke-width:1;stroke:#aab8c5}
+svg .ln.ax{stroke-width:1.6;stroke:#26323f}
+svg .ra{fill:none;stroke:#26323f;stroke-width:1.6}
+svg .dot{fill:#26323f}
+.rad{white-space:nowrap}.rad .rr{border-top:1.5px solid currentColor;padding:0 1px;margin-left:1px}
+.fr{display:inline-block;vertical-align:middle;text-align:center;line-height:1.2;margin:0 2px}
+.fr>span{display:block;padding:0 3px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.pr{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;background:#fdfefe}
+.pr .qt{font-weight:700;margin-bottom:6px}
+.pr .opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:8px}
+.pr .opts button{background:#fff;color:var(--ink);border:2px solid #c7d6e4;text-align:center;font-size:18px;padding:8px 10px}
+.pr .opts button:hover{background:#f0f7fd}
+.pr .opts button.right{background:#e3f6e9;border-color:var(--ok)}
+.pr .opts button.wrong{background:#fde7e7;border-color:var(--ng)}
+.pr .fb{min-height:24px;margin-top:8px;font-size:16px}
+.pr .fb.ok{color:#177a43}.pr .fb.ng{color:var(--ng)}
+.pr .sol{display:none;background:#f1f7fd;border:1px solid #cfe2f4;border-radius:10px;padding:8px 14px;margin-top:8px;font-size:17px}
+.pr .sol.on{display:block}
+.pr .sol .ln{display:block}
+.pr .hintbtn{background:#fff3d6;color:#8a5a00;font-size:14px;padding:4px 12px;margin-top:6px}
+.modal{position:fixed;inset:0;background:rgba(20,30,40,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal.on{display:flex}
+.modal .box{background:#fff;border-radius:14px;padding:20px 24px;max-width:480px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.modal .box h4{margin:0 0 6px;color:#8a5a00}
+#prog{font-weight:700;color:var(--main-d)}
+#clear{display:none;text-align:center;font-size:21px;color:#14683a;font-weight:700;padding:14px;background:#e8f8ee;border-radius:12px;margin-top:10px}
+canvas#petals{position:fixed;inset:0;pointer-events:none;z-index:60}
+i.v{font-style:italic;font-family:"Times New Roman","BIZ UDPMincho",serif;font-size:1.08em}
+table.rt{border-collapse:collapse;margin:8px auto}table.rt td,table.rt th{border:1px solid #9fb3c4;padding:4px 14px;text-align:center}
+footer{text-align:center;color:var(--sub);font-size:13px;padding:20px}
+svg .semi{fill:rgba(255,150,40,.42);stroke:#d9822b;stroke-width:2.2;stroke-linejoin:round}
+
+.flab{display:flex;align-items:center;justify-content:center;height:44px;font-weight:700;white-space:nowrap}
+.katex{font-size:1.08em}
+.flab .katex{font-size:1em}
+.flab .katex svg{width:revert;max-width:none;height:revert;display:block}
+
+/* 図版の共通調整：白背景・文字の縁取り・補助線の区別・スマホ対応 */
+.fig{background:#fff;border:1px solid #d5e4ef;border-radius:13px;padding:12px 8px;margin:14px auto;box-sizing:border-box;overflow:visible}
+.fig svg{display:block;margin:auto;overflow:visible;max-width:100%;height:auto;filter:none}
+.fig svg .lab{paint-order:stroke fill;stroke:#fff;stroke-width:4px;stroke-linejoin:round;font-family:"BIZ UDPGothic","BIZ UDゴシック",system-ui,sans-serif;letter-spacing:.01em}
+.fig svg .lab.s{font-size:16px}.fig svg .lab.m{font-size:19px}
+.fig svg .ln,.fig svg .ra{stroke-linecap:round;stroke-linejoin:round}
+.fig svg .ln.aux{stroke:#d64c36;stroke-dasharray:7 5;stroke-width:2.9}
+.fig svg .ln.dash{stroke:#66788c;stroke-dasharray:5 5;stroke-opacity:.8}
+.fig svg .hl{fill:#ffe0a0;fill-opacity:.38;stroke:#df8020;stroke-width:2.4}
+.fig svg .semi{fill:#f6c26e;fill-opacity:.24;stroke:#d97b27;stroke-width:2.2}
+.fig svg .ln.thin{stroke:#d9e4ed;stroke-width:.9;stroke-opacity:.9}
+.fig svg .ln.ax{stroke:#37566b;stroke-width:1.7}
+@media(max-width:520px){.fig{padding:10px 4px}.fig svg .lab.m{font-size:18px}}
+.pn{display:flex;justify-content:space-between;gap:10px;max-width:860px;margin:10px auto 0;padding:0 14px}
+.pn a{flex:1;text-align:center;text-decoration:none;background:#1f6fb2;color:#fff;border-radius:10px;padding:12px 8px;font-weight:700}
+.pn a.prev{background:#fff;color:#1f6fb2;border:2px solid #1f6fb2}
+.pn span{flex:1}
+</style></head><body>
+<script>/* ===== 江原予備校 GAMBA 三平方の定理 共通部品 ===== */
+const $ = id => document.getElementById(id);
+const UNITS = [
+  ['sanheihou.html','① なぜ成り立つか'],
+  ['sanheihou-2-keisan.html','② 計算'],
+  ['sanheihou-3-hojo1.html','③ 補助線①'],
+  ['sanheihou-4-hojo2.html','④ 補助線②（円）'],
+  ['sanheihou-5-zahyo.html','⑤ 座標'],
+  ['sanheihou-6-kukan.html','⑥ 空間図形'],
+  ['sanheihou-7-hi.html','⑦ 特別な三角形'],
+  ['sanheihou-8-taiseki.html','⑧ 体積・方程式'],
+  ['sanheihou-9-matome.html','⑨ まとめ演習']
+];
+/* 数式の簡易表記 → HTML */
+function _bal(s,i){let d=0;for(let j=i;j<s.length;j++){if(s[j]==='{')d++;else if(s[j]==='}'){d--;if(d===0)return j;}}return s.length-1;}
+function _tex(s){
+  let o='';
+  for(let i=0;i<s.length;){
+    if(s.startsWith('√{',i)){const j=_bal(s,i+1);o+='\\sqrt{'+_tex(s.slice(i+2,j))+'}';i=j+1;}
+    else if(s[i]==='√'&&/\d/.test(s[i+1]||'')){let k=i+1,d='';while(/\d/.test(s[k]||'')){d+=s[k];k++;}o+='\\sqrt{'+d+'}';i=k;}
+    else if(s.startsWith('F{',i)){const j=_bal(s,i+1);const in_=s.slice(i+2,j);let dp=0,cut=-1;for(let k=0;k<in_.length;k++){if(in_[k]==='{')dp++;else if(in_[k]==='}')dp--;else if(in_[k]==='|'&&dp===0){cut=k;break;}}
+      o+='\\dfrac{'+_tex(in_.slice(0,cut))+'}{'+_tex(in_.slice(cut+1))+'}';i=j+1;}
+    else if(s[i]==='^'&&/\d/.test(s[i+1]||'')){o+='^{'+s[i+1]+'}';i+=2;}
+    else if(s[i]==='×'){o+='\\times ';i++;}
+    else if(s[i]==='−'){o+='-';i++;}
+    else if(s[i]==='√'){o+='\\sqrt{}';i++;}
+    else{o+=s[i];i++;}
+  }
+  return o;
+}
+function _kx(t){try{return katex.renderToString(t,{throwOnError:false});}catch(e){return t;}}
+function M(s){
+  s=String(s);
+  if(typeof katex==='undefined'){
+    return s.replace(/\^(\d)/g,'<sup>$1</sup>').replace(/√\{([^}]*)\}/g,'√$1').replace(/F\{([^|}]*)\|([^}]*)\}/g,'($1)/($2)').replace(/\*([a-zA-Z])\*/g,'<i class="v">$1</i>');
+  }
+  let out='',buf='';
+  const flush=()=>{out+=buf.replace(/\^(\d)/g,'<sup>$1</sup>').replace(/\*([a-zA-Z])\*/g,'<i class="v">$1</i>');buf='';};
+  for(let i=0;i<s.length;){
+    const isAtom=s.startsWith('√',i)||s.startsWith('F{',i);
+    if(isAtom){
+      let j;
+      if(s.startsWith('F{',i))j=_bal(s,i+1)+1;
+      else if(s.startsWith('√{',i))j=_bal(s,i+1)+1;
+      else{j=i+1;while(/\d/.test(s[j]||''))j++;}
+      let coef='';const m=buf.match(/(\d+)$/);
+      if(m){coef=m[1];buf=buf.slice(0,-coef.length);}
+      let atom=s.slice(i,j);
+      let sup='';const sm=s.slice(j).match(/^\^(\d)/);
+      if(sm){atom+='^'+sm[1];j+=2;}
+      flush();out+=_kx(_tex(coef+atom));i=j;
+    }else{buf+=s[i];i++;}
+  }
+  flush();return out;
+}
+/* ---- 図の描画 ---- */
+function view(box,W,H,pad){
+  const k=Math.min((W-2*pad)/(box[2]-box[0]),(H-2*pad)/(box[3]-box[1]));
+  const ox=(W-k*(box[2]-box[0]))/2-k*box[0];
+  const oy=(H+k*(box[3]-box[1]))/2+k*box[1];
+  return {k,p:(x,y)=>[ox+k*x,oy-k*y]};
+}
+function renderFig(F,step){
+  const W=F.w||480,H=F.h||320;
+  const v=view(F.box,W,H,F.pad===undefined?18:F.pad);
+  let o='';
+  const vis=op=>{op=op||{};return (op.s||0)<=step && !(op.e!==undefined&&step>=op.e);};
+  const P=(p)=>v.p(p[0],p[1]);
+  const pstr=a=>a.map(q=>P(q).map(z=>z.toFixed(1)).join(',')).join(' ');
+  const g={
+    v,
+    poly(pts,cls,op){ if(vis(op)) o+=`<polygon class="${cls||'tri'}" points="${pstr(pts)}"/>`; },
+    line(a,b,cls,op){ if(vis(op)){const A=P(a),B=P(b);o+=`<line class="ln ${cls||''}" x1="${A[0].toFixed(1)}" y1="${A[1].toFixed(1)}" x2="${B[0].toFixed(1)}" y2="${B[1].toFixed(1)}"/>`;} },
+    t(p,s,dx,dy,op){ if(vis(op)){op=op||{};const A=P(p);
+      if(/√|F\{/.test(s)&&typeof katex!=='undefined'){const fs=({s:15,m:18,b:22})[op.c||'s'];const X=A[0]+(dx||0),Y=A[1]+(dy||0);
+        o+=`<foreignObject x="${(X-70).toFixed(1)}" y="${(Y-22).toFixed(1)}" width="140" height="44" style="overflow:visible"><div xmlns="http://www.w3.org/1999/xhtml" class="flab" style="font-size:${fs}px;color:${op.col||'#26323f'}">${M(s)}</div></foreignObject>`;
+      } else o+=`<text class="lab ${op.c||'s'}" x="${(A[0]+(dx||0)).toFixed(1)}" y="${(A[1]+(dy||0)).toFixed(1)}"${op.col?` style="--lf:${op.col}"`:''}>${s}</text>`;} },
+    ra(p,d1,d2,op){ if(vis(op)){const A=P(p),px=(op&&op.px)||12;const n1=Math.hypot(d1[0],d1[1])||1,n2=Math.hypot(d2[0],d2[1])||1;const e1=[d1[0]*px/n1,-d1[1]*px/n1],e2=[d2[0]*px/n2,-d2[1]*px/n2];
+      o+=`<path class="ra" d="M${A[0]+e1[0]},${A[1]+e1[1]} L${A[0]+e1[0]+e2[0]},${A[1]+e1[1]+e2[1]} L${A[0]+e2[0]},${A[1]+e2[1]}"/>`;} },
+    dot(p,op){ if(vis(op)){const A=P(p);o+=`<circle class="dot" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" r="3.4"/>`;} },
+    circ(c,r,cls,op){ if(vis(op)){const A=P(c);o+=`<circle class="${cls||'plain'}" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" r="${(r*v.k).toFixed(1)}"/>`;} },
+    /* 楕円。half:'front'(下半分)・'back'(上半分) */
+    ell(c,rx,ry,cls,op){ if(vis(op)){op=op||{};const A=P(c),RX=rx*v.k,RY=ry*v.k;
+      if(!op.half){o+=`<ellipse class="${cls||'plain'}" cx="${A[0].toFixed(1)}" cy="${A[1].toFixed(1)}" rx="${RX.toFixed(1)}" ry="${RY.toFixed(1)}"/>`;}
+      else{ const x0=A[0]-RX,x1=A[0]+RX;
+        if(op.half==='front') o+=`<path class="ln" d="M${x0},${A[1]} A${RX},${RY} 0 0 0 ${x1},${A[1]}"/>`;
+        else o+=`<path class="ln dash" d="M${x0},${A[1]} A${RX},${RY} 0 0 1 ${x1},${A[1]}"/>`; } } },
+    /* 角度の弧（数学座標の角 a0→a1 ラジアン） */
+    arc(c,r,a0,a1,col,op){ if(vis(op)){const A=P(c);let d='';for(let i=0;i<=14;i++){const a=a0+(a1-a0)*i/14;d+=(i?'L':'M')+(A[0]+r*Math.cos(a)).toFixed(1)+','+(A[1]-r*Math.sin(a)).toFixed(1);}
+      o+=`<path d="${d}" fill="none" stroke="${col||'#d63a3a'}" stroke-width="2.6"/>`;} }
+  };
+  F.f(g,step);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="問題の図形：色付きの線は注目する辺、赤い破線は補助線を表します" shape-rendering="geometricPrecision"><title>三平方の定理の図形</title>${o}</svg>`;
+}
+/* 直角三角形：(0,0),(w,0),(w,h)・直角は右下 */
+function RT(g,o){
+  const w=o.w,h=o.h,len=Math.hypot(w,h);
+  g.poly([[0,0],[w,0],[w,h]],o.cls||'tri');
+  g.ra([w,0],[-1,0],[0,1],{px:13});
+  if(o.lb!==undefined) g.t([w/2,0],o.lb,0,19,{c:'m'});
+  if(o.lr!==undefined) g.t([w,h/2],o.lr,22,0,{c:'m'});
+  if(o.lh!==undefined) g.t([w/2,h/2],o.lh,-22*h/len,-22*w/len,{c:'m'});
+}
+/* 直方体（底面EFGH・上面ABCD、A-E, B-F, C-G, D-H）  EF=w, FG=d(奥行き), GC=h */
+function cuboid(g,w,d,h,opt){
+  opt=opt||{}; const ox=d*0.42, oy=d*0.32;
+  const E=[0,0],F=[w,0],G=[w+ox,oy],H=[ox,oy],A=[0,h],B=[w,h],C=[w+ox,oy+h],D=[ox,oy+h];
+  g.poly([A,B,C,D],'plain'); g.poly([A,B,F,E],'plain'); g.poly([B,C,G,F],'plain');
+  g.line(E,H,'dash'); g.line(H,G,'dash'); g.line(H,D,'dash');
+  const names={A,B,C,D,E,F,G,H};
+  if(opt.names!==false){
+    g.t(A,'A',-11,-10);g.t(B,'B',-2,-15);g.t(C,'C',12,-6);g.t(D,'D',-6,-12);
+    g.t(E,'E',-11,12);g.t(F,'F',10,13);g.t(G,'G',12,8);g.t(H,'H',-12,8);
+  }
+  return names;
+}
+/* ---- 例題 ---- */
+function mountExample(host,E){
+  host.className='ex';
+  host.innerHTML=`<div class="exh">${E.title}</div><div class="exq">${M(E.q)}</div>
+  <div class="fig"></div><div class="steptext"></div><div class="formula"></div>
+  <div class="ctrl"><button class="ghost" data-a="prev">◀ もどる</button><button data-a="next">次へ ▶</button><button class="ghost" data-a="reset">最初から</button><span class="dots"></span></div>`;
+  let i=0; const n=E.steps.length;
+  const q=s=>host.querySelector(s);
+  function render(){
+    q('.fig').innerHTML=renderFig(E.fig,i);
+    q('.steptext').innerHTML=M(E.steps[i].t);
+    q('.formula').innerHTML=E.steps[i].f?E.steps[i].f.split('¶').map(x=>'<span class="ln">'+M(x)+'</span>').join(''):'';
+    q('.dots').textContent='STEP '+(i+1)+' / '+n;
+    q('[data-a=prev]').disabled=i===0; q('[data-a=next]').disabled=i===n-1;
+  }
+  q('[data-a=prev]').onclick=()=>{if(i>0){i--;render();}};
+  q('[data-a=next]').onclick=()=>{if(i<n-1){i++;render();}};
+  q('[data-a=reset]').onclick=()=>{i=0;render();};
+  render();
+}
+/* ---- 練習 ---- */
+const SOLVED={n:0,total:0};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function mountPractice(host,PR){
+  const wrap=document.createElement('div');
+  PR.items.forEach((it,idx)=>{
+    SOLVED.total++;
+    const d=document.createElement('div'); d.className='pr';
+    d.innerHTML=`<div class="qt">${PR.no||'練習'}(${idx+1})　${M(it.q)}</div>${it.fig?`<div class="fig">${renderFig(it.fig,0)}</div>`:''}
+      <div class="opts"></div><div class="fb"></div><div class="sol"></div><button class="hintbtn">💡 ヒント</button>`;
+    const opts=d.querySelector('.opts'),fb=d.querySelector('.fb'),sol=d.querySelector('.sol');
+    let done=false;
+    shuffle(it.ch.map((c,k)=>({c,k}))).forEach(o=>{
+      const b=document.createElement('button'); b.innerHTML=M(o.c);
+      b.onclick=()=>{
+        if(done) return;
+        if(o.k===it.a){
+          done=true; b.classList.add('right'); fb.className='fb ok'; fb.textContent='⭕ 正解です！　解き方を確かめましょう。';
+          sol.innerHTML=it.sol.split('¶').map(x=>'<span class="ln">'+M(x)+'</span>').join(''); sol.classList.add('on');
+          if(it.fig){ d.querySelector('.fig').innerHTML=renderFig(it.fig,99); }
+          SOLVED.n++; updateProg();
+        }else{ b.classList.add('wrong'); fb.className='fb ng'; fb.textContent='もう一度考えてみましょう。「ヒント」も使えます。'; }
+      };
+      opts.appendChild(b);
+    });
+    d.querySelector('.hintbtn').onclick=()=>{ $('modal-t').innerHTML=M(it.hint); $('modal').classList.add('on'); };
+    wrap.appendChild(d);
+  });
+  host.appendChild(wrap);
+}
+function updateProg(){
+  const e=$('prog'); if(e) e.textContent=SOLVED.n+' / '+SOLVED.total+' 問 正解';
+  if(SOLVED.n===SOLVED.total && SOLVED.total>0){ $('clear').style.display='block'; startPetals(); }
+}
+/* ---- 花吹雪 ---- */
+function startPetals(){
+  const cv=$('petals'),ctx=cv.getContext('2d');
+  cv.width=innerWidth;cv.height=innerHeight;
+  const P=[];for(let i=0;i<140;i++)P.push({x:Math.random()*cv.width,y:-Math.random()*cv.height,r:5+Math.random()*7,vy:1.2+Math.random()*2.2,vx:-.8+Math.random()*1.6,rot:Math.random()*6.28,vr:-.05+Math.random()*.1,c:['#ffb7d1','#ff9ec2','#ffd1e1','#ffc2d9'][i%4]});
+  const t0=performance.now();
+  (function loop(now){ctx.clearRect(0,0,cv.width,cv.height);
+    P.forEach(p=>{p.y+=p.vy;p.x+=p.vx+Math.sin((now+p.r*200)/600)*.6;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;ctx.beginPath();ctx.ellipse(0,0,p.r,p.r*.6,0,0,6.28);ctx.fill();ctx.restore();});
+    if(now-t0<6000)requestAnimationFrame(loop);else ctx.clearRect(0,0,cv.width,cv.height);})(t0);
+}
+/* ---- ページ組み立て ---- */
+function buildPage(U){
+  document.title=U.title+'｜江原予備校 GAMBA';
+  const nav=UNITS.map(u=>`<a href="${u[0]}"${u[0]===U.file?' class="now"':''}>${u[1]}</a>`).join('');
+  let h=`<header class="hero"><small>江原予備校　GAMBA　中学数学　図形　三平方の定理</small><h1>${U.title}</h1><p>${U.lead}</p></header><nav class="units">${nav}</nav><main></main>
+  <footer>江原予備校　GAMBA 中学数学　三平方の定理</footer>
+  <div class="modal" id="modal"><div class="box"><h4>💡 ヒント</h4><div id="modal-t"></div><div style="text-align:right;margin-top:10px"><button id="modal-x">とじる</button></div></div></div><canvas id="petals"></canvas>`;
+  document.body.innerHTML=h;
+  const main=document.querySelector('main');
+  let sec=null;
+  const newSec=(title)=>{sec=document.createElement('section');sec.className='card';if(title)sec.innerHTML='<h2>'+title+'</h2>';main.appendChild(sec);};
+  newSec(null);
+  U.blocks.forEach(b=>{
+    if(b.h2){newSec(b.h2);}
+    else if(b.html){const d=document.createElement('div');d.innerHTML=M2(b.html);sec.appendChild(d);}
+    else if(b.ex){const d=document.createElement('div');sec.appendChild(d);mountExample(d,b.ex);}
+    else if(b.pr){const t=document.createElement('h3');t.textContent=b.pr.no+'（全部で'+b.pr.items.length+'問）';sec.appendChild(t);mountPractice(sec,b.pr);}
+  });
+  const fin=document.createElement('section');fin.className='card';
+  fin.innerHTML='<h3>この単元の練習　<span id="prog">0 / '+SOLVED.total+' 問 正解</span></h3><div id="clear">🌸 全問正解です！　よくがんばりました。 🌸</div>';
+  main.appendChild(fin);
+  main.insertAdjacentHTML("beforeend",`<div class="pn"><a class="prev" href="sanheihou-6-kukan.html">◀ 前へ：⑥ 空間図形</a><a href="sanheihou-8-taiseki.html">次へ：⑧ 体積・方程式 ▶</a></div>`);
+  $('modal-x').onclick=()=>$('modal').classList.remove('on');
+  $('modal').addEventListener('click',e=>{if(e.target.id==='modal')$('modal').classList.remove('on');});
+}
+/* html ブロック内の M() 変換（タグ内の属性は触らない簡易版） */
+function M2(s){return M(s);}
+
+const V=(g,P,name,dx,dy,op)=>{g.t(P,name,dx,dy,Object.assign({c:'m'},op||{}));};
+const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+const S3=Math.sqrt(3);
+/* 30°-60°-90° の三角形：B(0,0)=30°, C(√3k,0)=90°, A(√3k,k)=60° */
+function tri3060(k,lab,opt){
+  opt=opt||{};
+  const B=[0,0],C=[S3*k,0],A=[S3*k,k];
+  return {box:[-0.5*k,-0.55*k,S3*k+0.7*k,k*1.45],w:440,h:280,f:(g,s)=>{
+    g.poly([B,C,A],'tri'); g.ra(C,[-1,0],[0,1],{px:13});
+    V(g,B,'B',-12,10);V(g,C,'C',13,12);V(g,A,'A',8,-14);
+    g.t(B,'30°',40,-10,{c:'s'});g.t(A,'60°',-9,32,{c:'s'});
+    if(lab.AB) g.t(mid(A,B),lab.AB,-24*0.5,-28,{c:'m',col:(lab.ABc||'')});
+    if(lab.BC) g.t(mid(B,C),lab.BC,0,22,{c:'m',col:(lab.BCc||'')});
+    if(lab.AC) g.t(mid(A,C),lab.AC,26,0,{c:'m',col:(lab.ACc||'')});
+  }};
+}
+/* 直角二等辺三角形：B(0,0)=45°, C(k,0)=90°, A(k,k)=45° */
+function tri45(k,lab){
+  const B=[0,0],C=[k,0],A=[k,k];
+  return {box:[-0.5*k,-0.55*k,k*1.7,k*1.45],w:420,h:280,f:(g,s)=>{
+    g.poly([B,C,A],'tri'); g.ra(C,[-1,0],[0,1],{px:13});
+    V(g,B,'B',-12,10);V(g,C,'C',13,12);V(g,A,'A',8,-14);
+    g.t(B,'45°',46,-8,{c:'s'});g.t(A,'45°',-8,36,{c:'s'});
+    if(lab.AB) g.t(mid(A,B),lab.AB,-26,-24,{c:'m'});
+    if(lab.BC) g.t(mid(B,C),lab.BC,0,22,{c:'m'});
+    if(lab.AC) g.t(mid(A,C),lab.AC,26,0,{c:'m'});
+  }};
+}
+/* 正三角形：1辺a  B(0,0) C(a,0) A(a/2,√3a/2) */
+function eqFig(a,lab){
+  const B=[0,0],C=[a,0],A=[a/2,S3*a/2],H=[a/2,0];
+  return {box:[-a*0.25,-a*0.3,a*1.25,S3*a/2+a*0.3],w:440,h:290,f:(g,s)=>{
+    g.poly([A,B,C],'tri');
+    g.line(A,H,'aux',{s:1}); g.ra(H,[-1,0],[0,1],{s:1,px:11});
+    V(g,A,'A',0,-14);V(g,B,'B',-12,10);V(g,C,'C',13,10);V(g,H,'H',0,18,{s:1});
+    g.t(mid(A,B),lab.side,-26,-6,{c:'m'});g.t(mid(A,C),lab.side,26,-6,{c:'m'});g.t(mid(B,C),lab.side,0,38,{c:'m',e:1});
+    if(lab.half){g.t(mid(H,C),lab.half,0,38,{c:'m',s:2});g.t(mid(B,H),lab.half,0,38,{c:'m',s:2});}
+    if(lab.h) g.t(mid(A,H),lab.h,18,0,{c:'m',col:'#d63a3a',s:3});
+    if(lab.hl){g.poly([H,C,A],'hl',{s:2,e:3});g.line(A,H,'aux',{s:2,e:3});g.ra(H,[-1,0],[0,1],{s:2,e:3,px:11});}
+  }};
+}
+const UNIT={file:'sanheihou-7-hi.html',title:'⑦ 特別な直角三角形と正三角形の面積',lead:'三角定規の辺の比（1：2：√3 と 1：1：√2）を、三平方の定理から導いて覚えます。',blocks:[
+{html:`<p class="lead">三角定規には、2種類あります。この2つの直角三角形は、辺の長さの比が<b>いつも決まっている</b>ので、三平方の定理を使わなくても辺の長さがわかります。まず、<b>なぜその比になるのか</b>を確かめましょう。</p>`},
+{h2:'1. 直角二等辺三角形（45°・45°・90°）の辺の比'},
+{ex:{title:'なぜ？①',q:'直角をはさむ2辺が 1 の直角二等辺三角形で、斜辺の長さはいくらですか。',fig:tri45(1.6,{BC:'1',AC:'1',AB:''}),steps:[
+ {t:'直角をはさむ2辺が等しい直角三角形（∠B ＝ ∠A ＝ 45°）です。直角をはさむ辺を 1 とします。'},
+ {t:'斜辺 AB の長さを三平方の定理で求めます。',f:'AB^2 ＝ 1^2 ＋ 1^2 ＝ 2'},
+ {t:'AB ＞ 0 より、',f:'AB ＝ <span class="hi">√{2}</span>'},
+ {t:'辺の比が決まりました。どんな大きさの直角二等辺三角形でも、辺の比は次のとおりです。',f:'直角をはさむ辺：直角をはさむ辺：斜辺¶＝ <span class="hi">1 ： 1 ： √{2}</span>'}]}},
+{h2:'2. 30°・60°・90°の三角形の辺の比'},
+{ex:{title:'なぜ？②',q:'1辺が 2 の正三角形 ABC の頂点 A から BC に垂線 AH をおろしたとき、AH の長さはいくらですか。',fig:eqFig(2.2,{side:'2',half:'1',h:'√3',hl:true}),steps:[
+ {t:'1辺が 2 の正三角形です。3つの角はすべて 60° です。'},
+ {t:'頂点 A から底辺 BC に垂線 AH をおろすと、H は BC の真ん中です。BH ＝ HC ＝ 1 となり、△AHC は 30°・60°・90° の三角形になります。',f:'HC ＝ 2 ÷ 2 ＝ <span class="hi">1</span>'},
+ {t:'△AHC（斜辺 AC ＝ 2）で、三平方の定理を使います。',f:'AC^2 ＝ AH^2 ＋ HC^2¶2^2 ＝ AH^2 ＋ 1^2¶AH^2 ＝ 3'},
+ {t:'AH ＞ 0 より AH ＝ √3 です。したがって、△AHC の辺の比がわかりました。',f:'HC：AC：AH ＝ <span class="hi">1 ： 2 ： √{3}</span>'}]}},
+{html:`<div class="point"><b class="t">重要</b>三角定規の辺の比（よく使うので、覚えましょう）
+<table class="rt"><tr><th>30°・60°・90°</th><th>45°・45°・90°</th></tr>
+<tr><td>30°の向かい：90°の向かい：60°の向かい<br><b>1 ： 2 ： √3</b></td><td>直角をはさむ辺：直角をはさむ辺：斜辺<br><b>1 ： 1 ： √2</b></td></tr></table>
+<p style="margin:6px 0 0">注）30°・60°・90° では、<b>斜辺が 2、いちばん短い辺が 1</b> です。</p></div>`},
+{h2:'3. 辺の比を使って、長さを求める'},
+{ex:{title:'例題1',q:'次の図で、x と y の長さを求めなさい。（∠B ＝ 30°、∠A ＝ 60°、∠C ＝ 90°、AC ＝ 2cm、AB ＝ x cm、BC ＝ y cm）',fig:tri3060(1.9,{AC:'2cm',AB:'x cm',BC:'y cm'}),steps:[
+ {t:'30°・60°・90° の三角形なので、辺の比は 1 ： 2 ： √3 です。30° の向かい側の辺は AC、90° の向かい側（斜辺）は AB、60° の向かい側は BC です。',f:'AC：AB：BC ＝ 1 ： 2 ： √{3}'},
+ {t:'AC ＝ 2cm は、比の 1 の 2倍です。他の辺も、すべて2倍になります。',f:'AC：AB：BC ＝ 1 ： 2 ： √{3}¶　　　 ×2　 ×2　 ×2　 ＝ 2cm ： 4cm ： 2√{3}cm'},
+ {t:'AB と BC を求めます。',f:'x ＝ AB ＝ <span class="hi">4</span> cm　　y ＝ BC ＝ <span class="hi">2√{3}</span> cm　（答）x ＝ 4、y ＝ 2√{3}'}]}},
+{ex:{title:'例題2',q:'∠B ＝ ∠A ＝ 45°、∠C ＝ 90°、AB ＝ 6cm の直角二等辺三角形で、BC の長さ x を求めなさい。',fig:tri45(1.6,{AB:'6cm',BC:'x cm',AC:'x cm'}),steps:[
+ {t:'直角二等辺三角形の辺の比は、直角をはさむ辺：直角をはさむ辺：斜辺 ＝ 1 ： 1 ： √2 です。斜辺は AB ＝ 6cm。',f:'BC：AC：AB ＝ 1 ： 1 ： √{2}'},
+ {t:'斜辺は、直角をはさむ辺の √2 倍です。だから、直角をはさむ辺 x は、斜辺を √2 でわります。',f:'x ＝ 6 ÷ √{2} ＝ F{6|√{2}}'},
+ {t:'分母と分子に √2 をかけて、分母からルートをなくします（<b>有理化</b>）。',f:'F{6|√{2}} ＝ F{6×√{2}|√{2}×√{2}} ＝ F{6√{2}|2} ＝ <span class="hi">3√{2}</span>　（答）3√{2} cm'}]}},
+{h2:'4. 辺の比を使って、正三角形の面積を求める'},
+{ex:{title:'例題3',q:'1辺が 6cm の正三角形 ABC の面積を求めなさい。',fig:eqFig(6,{side:'6cm',half:'3',h:'3√3',hl:true}),steps:[
+ {t:'正三角形の面積を求めるには、高さがわかればいいので、頂点 A から BC に垂線 AH をおろします。'},
+ {t:'H は BC の真ん中なので、HC ＝ 3cm。△AHC は 30°・60°・90° の三角形です。',f:'HC：AC：AH ＝ 1 ： 2 ： √{3}¶HC ＝ <span class="hi">3</span> cm'},
+ {t:'HC ＝ 3cm は、比の 1 の3倍です。AH は √3 の3倍になります。',f:'AH ＝ √{3} × 3 ＝ <span class="hi">3√{3}</span> cm'},
+ {t:'底辺を BC、高さを AH として面積を求めます。',f:'△ABC ＝ 6 × 3√{3} × F{1|2} ＝ <span class="hi">9√{3}</span>　（答）9√{3} cm^2'}]}},
+{ex:{title:'公式をつくろう',q:'1辺が a cm の正三角形の面積 S を、a を使った式で表しなさい。',fig:eqFig(5,{side:'a',half:'F',h:'',hl:true}),steps:[
+ {t:'例題3と同じように、頂点 A から垂線 AH をおろします。HC ＝ a の半分です。',f:'HC ＝ F{a|2}'},
+ {t:'HC：AC：AH ＝ 1 ： 2 ： √3 なので、AH は HC の √3 倍です。',f:'AH ＝ √{3} × F{a|2} ＝ F{√{3}|2} a'},
+ {t:'面積 S を求めます。',f:'S ＝ a × F{√{3}|2} a × F{1|2} ＝ <span class="hi">F{√{3}|4} a^2</span>'}]}},
+{html:`<div class="point"><b class="t">重要</b>1辺が <i class="v">a</i> の正三角形の面積 <i class="v">S</i> は
+<div class="big"><i class="v">S</i> ＝ F{√{3}|4} <i class="v">a</i>²</div>
+覚え方：<b>「4分の√3」</b>、<b>余分なルートさんは a に乗る</b>（2乗の意味）。まちがえないように覚えましょう。</div>`},
+{h2:'練習'},
+{pr:{no:'練習',items:[
+ {q:'30°・60°・90° の直角三角形の、辺の比（30°の向かい：斜辺：60°の向かい）はどれですか。',ch:['1 ： 2 ： √{3}','1 ： √{3} ： 2','1 ： 1 ： √{2}','2 ： √{3} ： 1'],a:0,hint:'正三角形を半分にした三角形です。斜辺が2、いちばん短い辺が1、残りの辺は √3 でした。',sol:'30°の向かい（いちばん短い辺）＝ 1、斜辺 ＝ 2、60°の向かい ＝ √{3}¶よって　1 ： 2 ： √{3}'},
+ {q:'直角二等辺三角形（45°・45°・90°）の、辺の比（直角をはさむ辺：直角をはさむ辺：斜辺）はどれですか。',ch:['1 ： 1 ： √{2}','1 ： 2 ： √{3}','1 ： 1 ： 2','1 ： √{2} ： √{3}'],a:0,hint:'直角をはさむ辺が 1 のとき、斜辺は 1² ＋ 1² ＝ 2 から √2 でした。',sol:'直角をはさむ辺 ＝ 1、1　斜辺 ＝ √{1^2＋1^2} ＝ √{2}¶よって　1 ： 1 ： √{2}'},
+ {q:'∠B＝30°、∠A＝60°、∠C＝90°、AB ＝ 6cm のとき、AC ＝ x cm、BC ＝ y cm を求めなさい。',fig:tri3060(1.9,{AB:'6cm',AC:'x cm',BC:'y cm'}),ch:['x ＝ 3、y ＝ 3√{3}','x ＝ 3√{3}、y ＝ 3','x ＝ 6√{3}、y ＝ 3','x ＝ 3、y ＝ 6'],a:0,hint:'AC：AB：BC ＝ 1 ： 2 ： √3。AB は 2 にあたり、6cm なので、比の 1 は 3cm です。',sol:'AC：AB：BC ＝ 1 ： 2 ： √{3}　AB ＝ 6cm は 2 の3倍¶x ＝ AC ＝ 1 × 3 ＝ 3　y ＝ BC ＝ √{3} × 3 ＝ 3√{3}　（答）x ＝ 3、y ＝ 3√{3}'},
+ {q:'∠B＝30°、∠A＝60°、∠C＝90°、AC ＝ √{6}cm のとき、AB ＝ x cm、BC ＝ y cm を求めなさい。',fig:tri3060(1.9,{AC:'√6 cm',AB:'x cm',BC:'y cm'}),ch:['x ＝ 2√{6}、y ＝ 3√{2}','x ＝ √{6}、y ＝ 3√{2}','x ＝ 2√{6}、y ＝ √{18}＋1','x ＝ 3√{2}、y ＝ 2√{6}'],a:0,hint:'AC：AB：BC ＝ 1 ： 2 ： √3。AC ＝ √6 が比の 1 にあたるので、AB は √6 の2倍、BC は √6 の √3 倍です。',sol:'AC：AB：BC ＝ 1 ： 2 ： √{3}　AC ＝ √{6}cm は 1 の √{6} 倍¶x ＝ AB ＝ 2 × √{6} ＝ 2√{6}¶y ＝ BC ＝ √{3} × √{6} ＝ √{18} ＝ 3√{2}　（答）x ＝ 2√{6}、y ＝ 3√{2}'},
+ {q:'∠B＝∠A＝45°、∠C＝90°、AB ＝ 4cm の直角二等辺三角形で、BC の長さ x を求めなさい。',fig:tri45(1.6,{AB:'4cm',BC:'x cm',AC:'x cm'}),ch:['2√{2} cm','2 cm','4√{2} cm','√{2} cm'],a:0,hint:'直角をはさむ辺 ＝ 斜辺 ÷ √2 です。4 ÷ √2 を、分母と分子に √2 をかけて有理化しましょう。',sol:'BC：AB ＝ 1 ： √{2}　BC ＝ 4 ÷ √{2} ＝ F{4√{2}|2} ＝ 2√{2}　（答）2√{2} cm'},
+ {q:'1辺が 8cm の正三角形の面積を求めなさい。',fig:eqFig(8,{side:'8cm'}),ch:['16√{3} cm²','32√{3} cm²','16 cm²','8√{3} cm²'],a:0,hint:'公式 S ＝ F{√3|4} a² に a ＝ 8 を代入します。8² ＝ 64 です。',sol:'S ＝ F{√{3}|4} × 8^2 ＝ F{√{3}|4} × 64 ＝ 16√{3}　（答）16√{3} cm^2'},
+ {q:'1辺が √{6}cm の正三角形の面積を求めなさい。',ch:['F{3√{3}|2} cm²','3√{3} cm²','F{√{18}|4} cm²','F{3√{6}|2} cm²'],a:0,hint:'公式 S ＝ F{√3|4} a² に a ＝ √6 を代入します。(√6)² ＝ 6 です。',sol:'S ＝ F{√{3}|4} × (√{6})^2 ＝ F{√{3}|4} × 6 ＝ F{6√{3}|4} ＝ F{3√{3}|2}　（答）F{3√{3}|2} cm^2'},
+ {q:'1辺が 10cm の正三角形の面積を求めなさい。',fig:eqFig(10,{side:'10cm'}),ch:['25√{3} cm²','50√{3} cm²','25 cm²','100√{3} cm²'],a:0,hint:'公式 S ＝ F{√3|4} a² に a ＝ 10 を代入します。100 ÷ 4 ＝ 25 です。',sol:'S ＝ F{√{3}|4} × 10^2 ＝ F{100√{3}|4} ＝ 25√{3}　（答）25√{3} cm^2'}
+]}}
+]};
+
+window.addEventListener('load',()=>buildPage(UNIT));
+</script></body></html>
